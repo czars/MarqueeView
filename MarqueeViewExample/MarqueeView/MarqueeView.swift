@@ -82,10 +82,10 @@ private extension Marquee {
     
     func createAni(with label: UILabel) -> CABasicAnimation {
         let ani = CABasicAnimation.init(keyPath: "position.x")
-        let width = baseView.frame.size.width
+        let width = self.frame.size.width
         ani.duration = CFTimeInterval(width / CGFloat(configuration.animateSpeed))
-        ani.fromValue = label.frame.origin.x+(0.5*label.frame.size.width)
-        ani.toValue = label.frame.origin.x-self.frame.size.width+(0.5*label.frame.size.width)
+        ani.fromValue = label.frame.origin.x + (0.5*label.frame.size.width)
+        ani.toValue = (label.frame.origin.x - width) + CGFloat(configuration.animationDestination) + (0.5*label.frame.size.width)
         ani.timingFunction = CAMediaTimingFunction.init(name: .linear)
         ani.repeatCount = configuration.repeatCount
         ani.delegate = MarqueeRemover(label)
@@ -96,6 +96,7 @@ private extension Marquee {
 class MarqueeConfiguration: NSObject {
     var repeatCount: Float = .greatestFiniteMagnitude
     var animateSpeed: Float = 60
+    var animationDestination : Float = -100
 }
 
 private class MarqueeRemover: NSObject, CAAnimationDelegate {
