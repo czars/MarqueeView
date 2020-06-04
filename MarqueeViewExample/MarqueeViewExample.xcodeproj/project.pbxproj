@@ -136,7 +136,8 @@
 			children = (
 				D75F82D22489707300CA014A /* MarqueeView.swift */,
 			);
-			path = MarqueeView;
+			name = MarqueeView;
+			path = ../MarqueeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
